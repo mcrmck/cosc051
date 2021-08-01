@@ -1,0 +1,12 @@
+INPUT square_pizza_length
+INPUT square_pizza_cost
+INPUT round_pizza_diameter
+INPUT round_pizza_cost
+
+CALCULATE square_pizza_area = square_pizza_length ^ 2
+CALCULATE square_pizza_ppsi = square_pizza_cost / square_pizza_area
+
+CALCULATE round_pizza_area = 0.5 * pi * ((0.5 * round_pizza_diameter) ^2)
+CALCULATE round_pizza_ppsi = round_pizza_cost / round_pizza_area
+
+DECISION lesser of two values, square_pizza_ppsi, round_pizza_ppsi

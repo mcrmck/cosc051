@@ -1,0 +1,56 @@
+start
+input input_file
+input cutoff_score
+
+calculate min_score = cutoff_score
+calculate max_score = 0
+calculate num_subjects = 0
+calculate num_qualified = 0
+calculate age_sum = 0
+calculate age_factor_sum = 0
+calculate progress_sum = 0
+calculate progress_factor_sum = 0
+calculate BMI_sum = 0
+calculate BMI_factor_sum = 0
+calculate headache_factor_sum = 0
+calculate stool_factor_sum = 0
+calculate asthma_factor_sum = 0
+calculate score_sum = 0
+
+while lines left to read in input_file do
+  calculate num_subjects = num_subjects + 1
+  if score > 0 and score < cutoff_score then
+  begin:
+    calculate num_qualified = num_qualified + 1
+    calculate age_sum = age_sum + age
+    calculate age_factor_sum = age_factor_sum + age_factor
+    calculate progress_sum = progress_sum + progress
+    calculate progress_factor_sum = progress_factor_sum + progress_factor
+    calculate BMI_sum = BMI_sum + (weight / (height ^ 2))
+    calculate BMI_factor_sum = BMI_factor_sum + BMI_factor
+    calculate headache_factor_sum = headache_factor_sum + headache_factor
+    calculate stool_factor_sum = stool_factor_sum + stool_factor
+    calculate asthma_factor_sum = asthma_factor_sum + asthma_factor
+    calculate score_sum = score_sum + score
+
+    if score < min_score then min_score = score
+    if score > max_score then max_score = score
+  end
+
+output num_subjects
+output (num_subjects - num_qualified)
+output num_qualified
+output (age_sum / num_qualified)
+output (age_factor_sum / num_qualified)
+output (progress_sum / num_qualified)
+output (progress_factor_sum / num_qualified)
+output (BMI_sum / num_qualified)
+output (BMI_factor_sum / num_qualified)
+output (headache_factor_sum / num_qualified)
+output (stool_factor_sum / num_qualified)
+output (asthma_factor_sum / num_qualified)
+output (score_sum / num_qualified)
+output min_score
+output max_score
+
+stop

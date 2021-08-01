@@ -1,0 +1,44 @@
+start
+input subject_id
+
+input age
+if age < 18 or age > 45, then age_factor = 0, otherwise:
+  calculate age_factor = ((age - 10) 5) * 13
+
+input progress
+calculate progress_factor = progress - 90
+
+input height
+input weight
+calculate BMI_factor = (weight / (height ^2))
+if BMI_factor < 15 or BMI_factor > 40, then BMI_factor = 0
+
+input egg_allergy_factor
+
+input headache_freq
+input headache_sev
+calculate headache_factor = headache_freq * headache_sev
+
+input stool_freq
+input stool_text
+calculate stool_factor = abs(4 - stool_text) * abs(2 - stool_freq)
+
+input asthma_presence
+if asthma_presence == true, then
+  begin:
+    input asthma_freq
+    calculate asthma_factor = 2 + asthma
+  end
+otherwise asthma_factor = 1
+
+if egg_allergy_factor == 1 or progress_factor < 0 or progress_factor > 90 or
+    BMI_factor == 0 or stool_freq > 6, then score = 0, otherwise:
+  calculate score = (age_factor / age_scalar) + (progress_factor / progress_scalar)+
+                    (BMI_factor / BMI_scalar) + (headache_factor / headache_scalar) +
+                    (stool_factor / stool_scalar) + (asthma_scalar / asthma_scalar)
+
+output subject_id, age, age_factor, progress, progress_factor, height, weight,
+        BMI_factor, egg_allergy_factor, headache_factor, stool_factor, asthma_factor
+        score
+
+end
